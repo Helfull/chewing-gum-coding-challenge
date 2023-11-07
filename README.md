@@ -30,7 +30,6 @@ Diese Anforderungen hat uns der Kunde im Briefing übergeben:
 Viel Spaß!
 
 ---
-
 ## Annahmen
 
 - VPN Zugang wird benötigt um die Webseite zuerreichen.
@@ -39,6 +38,9 @@ Viel Spaß!
 Begründung: Es gab keine Authentifizierung oder Authorisierung im Umsprung script
 
 - Eingabe vom Preis ist im format `XXXX,XX`
+
+## Apache / Webserver
+Es benötigt keine besondere Einstellung am Webserver.
 
 ## Architectur
 
