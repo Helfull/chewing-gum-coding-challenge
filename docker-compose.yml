@@ -1,0 +1,19 @@
+version: "3.8"
+
+volumes:
+  mariadb_data:
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: chewing_gum
+      MYSQL_USER: chewing_gum
+      MYSQL_PASSWORD: chewing_gum
+    ports:
+      - 3306:3306
