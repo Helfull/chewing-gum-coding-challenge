@@ -20,7 +20,7 @@
 
 <div class="mb-2 flex w-full justify-start">
     <label class="py-2 w-1/6" for="price">Preis:</label>
-    <input required value="<?= $data['price'] ?? '' ?>" name="price" id="price" type="number" class="py-2 px-1 border-b bg-gray-200 border-black text-right">
+    <input required value="<?= $data['price'] ?? '' ?>" name="price" id="price" class="py-2 px-1 border-b bg-gray-200 border-black text-right">
     <span class="py-2 pl-2 text-lg">€</span>
 </div>
 
