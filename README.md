@@ -40,6 +40,14 @@ Begründung: Es gab keine Authentifizierung oder Authorisierung im Umsprung scri
 
 - Eingabe vom Preis ist im format `XXXX,XX`
 
+## Architectur
+
+Das Projekt wurde in ein MVC gewandelt, so nah wie möglich, ohne zu viel Komplexität rein zubringen.
+
+app => Models, Business logic
+pages => Controller, generelle Zusammenstellung einer view
+views => "components"
+
 ## Mögliche optimierungen
 
 ## Architecture
@@ -53,3 +61,16 @@ Begründung: Es gab keine Authentifizierung oder Authorisierung im Umsprung scri
   - Möglicher angriff könnte sein `?page=../../.ssh/config` 
   - mit der Annahme das die Seite im `home` vom einem User liegt
   - Dies sollte jedoch kein Problem sein solange die Annahme mit dem VPN gegeben ist.
+
+## Testing???
+
+Warum ist kein unit testing gemacht?
+Das Aufsetzen von PHPUnit / PEST hätte länger gedauert als das anlegen des gesamten Projektes.
+Testen lassen sich hier auch nicht viele Sachen, testbar wären:
+
+- `parsePrice`
+- `ChewingGum::update`
+
+Aufgrund der gewählten Architecture (ChewingGum hat fast alle logic für die DB), ist es schwer diese zu testen.
+
+ChewingGum hat zu viel Verantwortung und müsste in 2 Klassen getrennt werden, einen DB layer und das Eigentliche Model, dies wurde hier nicht gemacht, da es meistens besser ist ein bereits vorhandenes Framework zunutzen wo all diese Funktionalitäten gegeben sind.
