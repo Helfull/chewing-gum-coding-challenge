@@ -8,10 +8,10 @@ class ChewingGum {
     private bool $fresh = true;
 
     private function __construct(
-        public readonly string $name,
-        public readonly int $taste,
-        public readonly string $color,
-        public readonly int $price,
+        public string $name,
+        public int $taste,
+        public string $color,
+        public int $price,
     ) {
     }
 
@@ -124,7 +124,24 @@ class ChewingGum {
     public function save(): bool {
         try {
             if (! $this->fresh) {
-                return $this->update();
+                $statement = $this->getDB()->prepare(
+                    "UPDATE kaugummisorten
+                        SET
+                            name=:name,
+                            taste=:taste,
+                            color=:color,
+                            price=:price
+                        WHERE id=:id
+                    "
+                );
+
+                return $statement->execute([
+                    "id" => (int) $this->id,
+                    "name" => $this->name,
+                    "taste" => $this->taste,
+                    "color" => $this->color,
+                    "price" => $this->price,
+                ]);
             }
 
             $statement = $this->getDB()->prepare(
@@ -151,26 +168,11 @@ class ChewingGum {
         }
     }
 
-    private function update() {
-        $statement = $this->getDB()->prepare(
-            "UPDATE kaugummisorten
-                SET
-                    name=:name,
-                    taste=:taste,
-                    color=:color,
-                    price=:price,
-                WHERE id=:id
-            "
-        );
-
-        return $statement->execute([
-            "id" => $this->id,
-            "name" => $this->name,
-            "taste" => $this->taste,
-            "color" => $this->color,
-            "price" => $this->price,
-        ]);
-
+    public function update(?string $name, ?int $taste, ?string $color, ?int $price) {
+        $this->name = $name ?? $this->name;
+        $this->taste = $taste ?? $this->taste;
+        $this->color = $color ?? $this->color;
+        $this->price = $price ?? $this->price;
     }
 
     private function getDB() {
