@@ -139,6 +139,10 @@ class ChewingGum {
                 "price" => $this->price,
             ]);
 
+            if ($status) {
+                $this->id = (int) $this->getDB()->lastInsertId();
+            }
+
             return $status;
         } catch (PDOException $e) {
             error_log("Fehler beim Speichern");
