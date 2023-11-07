@@ -211,5 +211,4 @@ class ChewingGum {
             default => "Anders",
         };
     }
-
 }
