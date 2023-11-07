@@ -28,3 +28,28 @@ Diese Anforderungen hat uns der Kunde im Briefing übergeben:
 * Im Idealfall sendest Du uns die Lösung als git-Repository. Wir sehen gerne die Lösungswege.
 
 Viel Spaß!
+
+---
+
+## Annahmen
+
+- VPN Zugang wird benötigt um die Webseite zuerreichen.
+- Keine Unautorisierten Personen können auf die Seite zugreifen.
+
+Begründung: Es gab keine Authentifizierung oder Authorisierung im Umsprung script
+
+- Eingabe vom Preis ist im format `XXXX,XX`
+
+## Mögliche optimierungen
+
+## Architecture
+- Es wäre möglich die Datenbank calls in eine DB Klasse zu extrahieren, wodurch die `ChewingGum` Klasse kleiner wird, und somit auch weniger Verantwortung hat.
+
+### Datenbank
+- Es könnte eine Tabelle `typen` angelegt werden um die unterschiedlichen Kaugummi Geschmäcker leichter zu erweitern.
+
+## Sicherheit
+- Derzeit werden die "Pages" per include und dem `$_GET` parameter gesteuert, dies kann dazu führen das ein Attacker eventuell zugriff auf andere Daten bekommt
+  - Möglicher angriff könnte sein `?page=../../.ssh/config` 
+  - mit der Annahme das die Seite im `home` vom einem User liegt
+  - Dies sollte jedoch kein Problem sein solange die Annahme mit dem VPN gegeben ist.
