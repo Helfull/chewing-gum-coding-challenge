@@ -1,7 +1,7 @@
 <?php
     $typeClass = match($type) {
         'success' => 'text-green-800 border-green-500 bg-green-100',
-        'error' => 'text-green-800 border-red-500 bg-red-100',
+        'error' => 'text-red-800 border-red-500 bg-red-100',
     }
 ?>
 
