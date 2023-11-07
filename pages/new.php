@@ -1,9 +1,8 @@
 <?php
 require_once './app/ChewingGum.php';
+require_once './app/utils.php';
 
-$gum = ChewingGum::make($_POST['name'], $_POST['taste'], $_POST['color'], $_POST['price']);
-
-echo json_encode($gum);
+$gum = ChewingGum::make($_POST['name'], $_POST['taste'], $_POST['color'], parsePrice($_POST['price'] ?? 0));
 
 if ($_GET['action'] === 'save') {
     if ($gum->save()) {
@@ -23,5 +22,13 @@ if ($_GET['action'] === 'save') {
 ?>
 
 <form method="post" action="?page=new&action=save" class="p-8 flex flex-col justify-center">
-    <?php _v('_form'); ?>
+    <?php _v('_form', [
+        'data' => [
+            "id" => $gum->id ?? null,
+            "name" => $gum->name ?? null,
+            "taste" => $gum->taste ?? null,
+            "color" => $gum->color ?? null,
+            "price" => $gum->getPriceStr() ?? null,
+        ],
+    ]); ?>
 </form>
