@@ -1,0 +1,1 @@
+<h2 class="text-3xl font-bold flex justify-center items-center">404 - Not found</h2>
