@@ -104,13 +104,13 @@ class ChewingGum {
             }
 
             $gum = new self(
-                name: $data['name'],
-                taste: $data['taste'],
-                color: $data['color'],
-                price: $data['price'],
+                name: $data[0]['name'],
+                taste: $data[0]['taste'],
+                color: $data[0]['color'],
+                price: $data[0]['price'],
             );
 
-            $gum->id = $data['id'];
+            $gum->id = $data[0]['id'];
             $gum->fresh = false;
 
             return $gum;
