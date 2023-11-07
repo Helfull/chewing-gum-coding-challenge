@@ -7,9 +7,9 @@
     <label class="py-2 w-1/6" for="taste">Geschmack:</label>
     <select required value="<?= $data['taste'] ?? '' ?>" name="taste" id="taste" type="number" class="py-2 px-1 border-b bg-gray-200 border-black">
         <option value="0">Bitte wählen!</option>
-        <option value="1">Süß</option>
-        <option value="2">Sauer</option>
-        <option value="3">Anders</option>
+        <option <?= $data['taste'] === 1 ? 'selected' : '' ?>  value="1">Süß</option>
+        <option <?= $data['taste'] === 2 ? 'selected' : '' ?>  value="2">Sauer</option>
+        <option <?= $data['taste'] === 3 ? 'selected' : '' ?>  value="3">Anders</option>
     </select>
 </div>
 
